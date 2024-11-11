@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+<html lang="en">
+ <title>Exception Handling</title>
+<head>
+    <link href="style2.css" rel="stylesheet"/>
+
+</head>
+<body>
+<u>    <h1>Exception Handling</h1></u>
+<pre>
+  <h3>  1. Write a Java program that throws an exception and catch it using a try-catch block</h3>
+Code:
+                            
+                                public class ExceptionDemo {
+                                    public static void main(String[] args) {
+                                        try {
+                                            int result = divide(10, 0);
+                                            System.out.println("Result: " + result);
+                                        } catch (ArithmeticException e) {
+                                            System.out.println("Exception caught: " + e.getMessage());
+                                        }
+                                
+                                        System.out.println("Program continues...");
+                                    }
+                                
+                                    public static int divide(int a, int b) {
+                                        return a / b;
+                                    }
+                                }
+                                       
+                            
+                            
+Output:
+
+                            
+                                Exception caught: / by zero
+                                Program continues...
+                                           
+                            
+                            
+<h3>2. Write a Java program to create a method that takes an integer as a parameter and throws an exception if the number is odd.</h3>
+Code:
+                            
+                                public class OddNumberExceptionDemo {
+                                    public static void main(String[] args) {
+                                        try {
+                                            checkEven(5);
+                                        } catch (IllegalArgumentException e) {
+                                            System.out.println("Exception caught: " + e.getMessage());
+                                        }
+                                
+                                        System.out.println("Program continues...");
+                                    }
+                                
+                                    public static void checkEven(int number) {
+                                        if (number % 2 != 0) {
+                                            throw new IllegalArgumentException("The number is odd: " + number);
+                                        }
+                                    }
+                                }
+                                       
+                            
+                            
+Output:
+
+                            
+                                Exception caught: The number is odd: 5
+                                Program continues...
+                                          
+                            
+                            
+<h3>3. Write a Java program to create a method that reads a file and throws an exception if the file is not found</h3>
+Code:
+                            
+                                import java.io.File;
+                                import java.io.FileNotFoundException;
+                                import java.util.Scanner;
+                                
+                                public class FileReadExceptionDemo {
+                                    public static void main(String[] args) {
+                                        try {
+                                            readFile("nonexistentfile.txt");
+                                        } catch (FileNotFoundException e) {
+                                            System.out.println("Exception caught: " + e.getMessage());
+                                        }
+                                
+                                        System.out.println("Program continues...");
+                                    }
+                                
+                                    public static void readFile(String fileName) throws FileNotFoundException {
+                                        File file = new File(fileName);
+                                        Scanner scanner = new Scanner(file);
+                                        while (scanner.hasNextLine()) {
+                                            System.out.println(scanner.nextLine());
+                                        }
+                                        scanner.close();
+                                    }
+                                }
+                                        
+                            
+                            
+Output:
+
+                            
+                                Exception caught: nonexistentfile.txt (No such file or directory)
+                                Program continues...
+                                          
+                            
+                            
+<h3>4. Write a Java program that reads a list of numbers from a file and throws an exception if any of the numbers are positive</h3>
+Code:
+                            
+                                import java.io.File;
+                                import java.io.FileNotFoundException;
+                                import java.util.Scanner;
+                                
+                                public class PositiveNumberExceptionDemo {
+                                    public static void main(String[] args) {
+                                        try {
+                                            readNumbers("numbers.txt");
+                                        } catch (IllegalArgumentException e) {
+                                            System.out.println("Exception caught: " + e.getMessage());
+                                        } catch (FileNotFoundException e) {
+                                            System.out.println("File not found: " + e.getMessage());
+                                        }
+                                
+                                        System.out.println("Program continues...");
+                                    }
+                                
+                                    public static void readNumbers(String fileName) throws FileNotFoundException {
+                                        File file = new File(fileName);
+                                        Scanner scanner = new Scanner(file);
+                                        while (scanner.hasNextLine()) {
+                                            String line = scanner.nextLine();
+                                            int number = Integer.parseInt(line);
+                                            if (number > 0) {
+                                                throw new IllegalArgumentException("Found a positive number: " + number);
+                                            }
+                                        }
+                                        scanner.close();
+                                    }
+                                }
+                                        
+                            
+                            
+Output:
+
+                            
+                                Exception caught: Found a positive number: 3
+                                Program continues...
+                                          
+                            
+                            
+<h3>5. Write a Java program that reads a file and throws an exception if the file is empty.</h3>
+Code:
+                            
+                                import java.io.File;
+                                import java.io.FileNotFoundException;
+                                import java.util.Scanner;
+                                
+                                public class EmptyFileExceptionDemo {
+                                    public static void main(String[] args) {
+                                        try {
+                                            checkFile("example.txt");
+                                        } catch (FileNotFoundException e) {
+                                            System.out.println("File not found: " + e.getMessage());
+                                        } catch (IllegalArgumentException e) {
+                                            System.out.println("Exception caught: " + e.getMessage());
+                                        }
+                                
+                                        System.out.println("Program continues...");
+                                    }
+                                
+                                    public static void checkFile(String fileName) throws FileNotFoundException {
+                                        File file = new File(fileName);
+                                        Scanner scanner = new Scanner(file);
+                                
+                                        if (!scanner.hasNextLine()) {
+                                            scanner.close();
+                                            throw new IllegalArgumentException("The file is empty.");
+                                        }
+                                
+                                        while (scanner.hasNextLine()) {
+                                            System.out.println(scanner.nextLine());
+                                        }
+                                        
+                                        scanner.close();
+                                    }
+                                }
+                                        
+                            
+                            
+Output:
+
+                            
+                                Exception caught: The file is empty.
+                                Program continues...
+                                          
+                            
+                            
+<h3>6. Write a Java program that reads a list of integers from the user and throws an exception if any numbers are duplicates</h3>
+Code:
+                            
+                                import java.util.HashSet;
+                                import java.util.Scanner;
+                                
+                                public class DuplicateNumberExceptionDemo {
+                                    public static void main(String[] args) {
+                                        Scanner sc = new Scanner(System.in);
+                                        HashSet<Integer> numbers = new HashSet<>();
+                                
+                                        System.out.print("Enter the number of integers you want to input: ");
+                                        int count = sc.nextInt();
+                                
+                                        System.out.println("Enter the integers:");
+                                
+                                        try {
+                                            for (int i = 0; i < count; i++) {
+                                                int number = sc.nextInt();
+                                                if (!numbers.add(number)) {
+                                                    throw new IllegalArgumentException("Duplicate number found: " + number);
+                                                }
+                                            }
+                                            System.out.println("All numbers are unique.");
+                                        } catch (IllegalArgumentException e) {
+                                            System.out.println("Exception caught: " + e.getMessage());
+                                        }
+                                
+                                        sc.close();
+                                    }
+                                }
+                                       
+                            
+                            
+Output:
+
+                            
+                                Enter the number of integers you want to input: 4
+                                Enter the integers:
+                                1
+                                2
+                                3
+                                2
+                                Exception caught: Duplicate number found: 2
+                                          
+                            
+                            
+<h3>7. Write a Java program to create a method that takes a string as input and throws an exception if the string does not contain vowels</h3>
+Code:
+                            
+                                public class VowelCheckExceptionDemo {
+                                    public static void main(String[] args) {
+                                        try {
+                                            checkVowels("bcdfghjklmnpqrstvwxz");
+                                        } catch (IllegalArgumentException e) {
+                                            System.out.println("Exception caught: " + e.getMessage());
+                                        }
+                                
+                                        System.out.println("Program continues...");
+                                    }
+                                
+                                    public static void checkVowels(String input) {
+                                        if (!input.matches(".*[aeiouAEIOU].*")) {
+                                            throw new IllegalArgumentException("The string does not contain any vowels.");
+                                        }
+                                    }
+                                }
+                                       
+                            
+                            
+Output
+
+                            
+                                Exception caught: The string does not contain any vowels.
+                                Program continues...
+                                           
+                            
+                            
+<h3>8. Write a Java program to connect the Java API to Database, if connection not successful then throw an exception</h3>
+
+Code:                            
+                                import java.sql.Connection;
+                                import java.sql.DriverManager;
+                                import java.sql.SQLException;
+                                
+                                public class DatabaseConnectionDemo {
+                                    public static void main(String[] args) {
+                                        String url = "jdbc:mysql://localhost:3306/your_database"; // Replace with your database URL
+                                        String user = "your_username"; // Replace with your database username
+                                        String password = "your_password"; // Replace with your database password
+                                
+                                        try {
+                                            Connection connection = connectToDatabase(url, user, password);
+                                            System.out.println("Database connection successful!");
+                                            connection.close();
+                                        } catch (SQLException e) {
+                                            System.out.println("Exception caught: " + e.getMessage());
+                                        }
+                                    }
+                                
+                                    public static Connection connectToDatabase(String url, String user, String password) throws SQLException {
+                                        Connection connection = DriverManager.getConnection(url, user, password);
+                                        return connection;
+                                    }
+                                }
+                                       
+                            
+                            
+Output:
+
+                            
+                                Exception caught: Access denied for user 'your_username'@'localhost' (using password: YES)
+          
+                            
+                            
+<h3>9. Write a Java program to manage the driver with path, username and password, if not successful then throw an exception</h3>
+Code:
+                            
+                                import java.sql.Connection;
+                                import java.sql.DriverManager;
+                                import java.sql.SQLException;
+                                
+                                public class DatabaseDriverManager {
+                                    public static void main(String[] args) {
+                                        String driverPath = "com.mysql.cj.jdbc.Driver"; // Replace with your JDBC driver class
+                                        String url = "jdbc:mysql://localhost:3306/your_database"; // Replace with your database URL
+                                        String user = "your_username"; // Replace with your database username
+                                        String password = "your_password"; // Replace with your database password
+                                
+                                        try {
+                                            Class.forName(driverPath); // Load the JDBC driver
+                                            Connection connection = connectToDatabase(url, user, password);
+                                            System.out.println("Database connection successful!");
+                                            connection.close();
+                                        } catch (ClassNotFoundException e) {
+                                            System.out.println("Exception caught: Driver not found - " + e.getMessage());
+                                        } catch (SQLException e) {
+                                            System.out.println("Exception caught: " + e.getMessage());
+                                        }
+                                    }
+                                
+                                    public static Connection connectToDatabase(String url, String user, String password) throws SQLException {
+                                        Connection connection = DriverManager.getConnection(url, user, password);
+                                        return connection;
+                                    }
+                                }
+                                       
+                            
+                            
+Output:
+
+                            
+                                Exception caught: Access denied for user 'your_username'@'localhost' (using password: YES)
+                                Exception caught: Driver not found - com.mysql.cj.jdbc.Driver
+
+                            
+                            
+<h3>10. Write a Java program to throw the SQL Query, insert, delete, update, if not successful then throw an exception</h3>
+Code:
+                            
+                                import java.sql.Connection;
+                                import java.sql.DriverManager;
+                                import java.sql.SQLException;
+                                import java.sql.Statement;
+                                
+                                public class SQLQueryDemo {
+                                    public static void main(String[] args) {
+                                        String url = "jdbc:mysql://localhost:3306/your_database"; // Replace with your database URL
+                                        String user = "your_username"; // Replace with your database username
+                                        String password = "your_password"; // Replace with your database password
+                                
+                                        try {
+                                            Connection connection = connectToDatabase(url, user, password);
+                                            Statement statement = connection.createStatement();
+                                
+                                            // Insert a record
+                                            String insertQuery = "INSERT INTO your_table (column1, column2) VALUES ('value1', 'value2')";
+                                            executeUpdate(statement, insertQuery);
+                                
+                                            // Update a record
+                                            String updateQuery = "UPDATE your_table SET column1 = 'newValue' WHERE column2 = 'value2'";
+                                            executeUpdate(statement, updateQuery);
+                                
+                                            // Delete a record
+                                            String deleteQuery = "DELETE FROM your_table WHERE column2 = 'value2'";
+                                            executeUpdate(statement, deleteQuery);
+                                
+                                            statement.close();
+                                            connection.close();
+                                            System.out.println("Database operations successful!");
+                                        } catch (SQLException e) {
+                                            System.out.println("Exception caught: " + e.getMessage());
+                                        }
+                                    }
+                                
+                                    public static Connection connectToDatabase(String url, String user, String password) throws SQLException {
+                                        return DriverManager.getConnection(url, user, password);
+                                    }
+                                
+                                    public static void executeUpdate(Statement statement, String query) throws SQLException {
+                                        int rowsAffected = statement.executeUpdate(query);
+                                        if (rowsAffected == 0) {
+                                            throw new SQLException("No rows affected for query: " + query);
+                                        }
+                                    }
+                                }
+                                
+                            
+                            
+Output:
+
+                            
+                                Exception caught: Access denied for user 'your_username'@'localhost' (using password: YES)
+                                Exception caught: No rows affected for query: UPDATE your_table SET column1 = 'newValue' WHERE column2 = 'value2'
+</pre>
+</body>
+
+
+</html>

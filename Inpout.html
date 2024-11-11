@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <title>Input/Output</title>
+<head>
+    <link href="style2.css" rel="stylesheet"/>
+
+</head>
+  
+
+<body>
+
+<u>    <h1>Input/Output</h1></u>
+<pre>
+<h3>    1. Enter the character from user using InputStreamReade</h3>
+
+Code:                            
+                                import java.io.BufferedReader;
+                                import java.io.IOException;
+                                import java.io.InputStreamReader;
+                                
+                                public class CharacterInput {
+                                    public static void main(String[] args) {
+                                        System.out.print("Enter a character: ");
+                                        
+                                        try {
+                                            // Create an InputStreamReader wrapped in a BufferedReader
+                                            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+                                            char inputChar = (char) reader.read();
+                                
+                                            // Clear the buffer
+                                            reader.readLine(); // Consume the rest of the line
+                                
+                                            System.out.println("You entered: " + inputChar);
+                                        } catch (IOException e) {
+                                            System.out.println("An error occurred while reading input: " + e.getMessage());
+                                        }
+                                    }
+                                }
+                                       
+                            
+                            
+Output:
+
+                            
+                                Enter a character: a
+                                You entered: a
+                                           
+                            
+<h3>2. Enter the string from user using BufferedStreamReader.</h3>
+
+Code:                            
+                            
+                                import java.io.BufferedReader;
+                                import java.io.IOException;
+                                import java.io.InputStreamReader;
+                                
+                                public class Main {
+                                    public static void main(String[] args) {
+                                        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+                                        System.out.println("Enter a string: ");
+                                        try {
+                                            String input = reader.readLine();
+                                            System.out.println("You entered: " + input);
+                                        } catch (IOException e) {
+                                            System.out.println("An error occurred while trying to read input.");
+                                        }
+                                    }
+                                }
+                                        
+                            
+                            
+Output:
+
+                            
+                                Enter a string: 
+                                Hello, World!
+                                You entered: Hello, World!
+                                          
+                            
+                            
+<h3>3. Enter the integer from user using Scanner class</h3>
+
+Code:                            
+                                import java.util.Scanner;
+
+                                public class Main {
+                                    public static void main(String[] args) {
+                                        Scanner scanner = new Scanner(System.in);
+                                        System.out.println("Enter an integer: ");
+                                        
+                                        int input = scanner.nextInt();
+                                        System.out.println("You entered: " + input);
+                                        
+                                        scanner.close();
+                                    }
+                                }
+                                        
+                            
+                            
+Output:
+
+                            
+                                Enter an integer: 
+                                42
+                                You entered: 42
+                                           
+                            
+                            
+<h3>4. Enter the float from user using Scanner class</h3>
+
+Code:                            
+                                import java.util.Scanner;
+
+                                public class Main {
+                                    public static void main(String[] args) {
+                                        Scanner scanner = new Scanner(System.in);
+                                        System.out.println("Enter a float: ");
+                                        
+                                        float input = scanner.nextFloat();
+                                        System.out.println("You entered: " + input);
+                                        
+                                        scanner.close();
+                                    }
+                                }
+                                        
+                            
+                            
+Output:
+
+                            
+                                Enter a float: 
+                                3.14
+                                You entered: 3.14
+                                          
+                            
+                            
+<h3>5. Enter the double from user using Scanner class</h3>
+
+Code:                            
+                                import java.util.Scanner;
+
+                                public class Main {
+                                    public static void main(String[] args) {
+                                        Scanner scanner = new Scanner(System.in);
+                                        System.out.println("Enter a double: ");
+                                        
+                                        double input = scanner.nextDouble();
+                                        System.out.println("You entered: " + input);
+                                        
+                                        scanner.close();
+                                    }
+                                }
+                                        
+                            
+                            
+Output:
+
+                            
+                                Enter a double: 
+                                2.71828
+                                You entered: 2.71828
+                                          
+                            
+                            
+<h3>6. Enter the boolean from user using Scanner class</h3>
+
+Code:                            
+                                import java.util.Scanner;
+
+                                public class Main {
+                                    public static void main(String[] args) {
+                                        Scanner scanner = new Scanner(System.in);
+                                        System.out.println("Enter a boolean (true/false): ");
+                                        
+                                        boolean input = scanner.nextBoolean();
+                                        System.out.println("You entered: " + input);
+                                        
+                                        scanner.close();
+                                    }
+                                }
+                                        
+                            
+                            
+Output:
+
+                            
+                                Enter a boolean (true/false): 
+                                true
+                                You entered: true
+                                           
+                            
+                            
+<h3>7. Enter the short integer from user using Scanner class</h3>
+
+Code:                            
+                                import java.util.Scanner;
+
+                                public class Main {
+                                    public static void main(String[] args) {
+                                        Scanner scanner = new Scanner(System.in);
+                                        System.out.println("Enter a short integer: ");
+                                        
+                                        short input = scanner.nextShort();
+                                        System.out.println("You entered: " + input);
+                                        
+                                        scanner.close();
+                                    }
+                                }
+                                       
+                            
+                            
+Output:
+
+                            
+                                Enter a short integer: 
+                                123
+                                You entered: 123
+                                           
+                            
+                            
+<h3>8. Enter the long integer from user using Scanner class</h3>
+
+Code:                            
+                                import java.util.Scanner;
+
+                                public class Main {
+                                    public static void main(String[] args) {
+                                        Scanner scanner = new Scanner(System.in);
+                                        System.out.println("Enter a long integer: ");
+                                        
+                                        long input = scanner.nextLong();
+                                        System.out.println("You entered: " + input);
+                                        
+                                        scanner.close();
+                                    }
+                                }
+                                        
+                            
+                            
+Output:
+
+                            
+                                Enter a long integer: 
+                                1234567890123
+                                You entered: 1234567890123
+                                           
+                            
+                            
+<h3>9. Get all characters from the file and display on the screen</h3>
+
+Code:                            
+                                import java.io.BufferedReader;
+                                import java.io.FileReader;
+                                import java.io.IOException;
+                                
+                                public class Main {
+                                    public static void main(String[] args) {
+                                        String filePath = "path/to/your/file.txt"; // Specify the path to your file
+                                        
+                                        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+                                            String line;
+                                            while ((line = reader.readLine()) != null) {
+                                                System.out.println(line);
+                                            }
+                                        } catch (IOException e) {
+                                            System.out.println("An error occurred while reading the file: " + e.getMessage());
+                                        }
+                                    }
+                                }
+                                        
+                            
+                            
+Output:
+
+                            
+                                Hello, World!
+                                Welcome to Java programming.
+                                          
+                            
+                            
+<h3>10. Get all characters from the file, count number of lines, words, characters and display on the screen</h3>
+
+Code:                            
+                                import java.io.BufferedReader;
+                                import java.io.FileReader;
+                                import java.io.IOException;
+                                
+                                public class Main {
+                                    public static void main(String[] args) {
+                                        String filePath = "path/to/your/file.txt"; // Specify the path to your file
+                                        int lineCount = 0;
+                                        int wordCount = 0;
+                                        int charCount = 0;
+                                
+                                        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+                                            String line;
+                                            while ((line = reader.readLine()) != null) {
+                                                lineCount++;
+                                                charCount += line.length();
+                                                String[] words = line.split("\\s+"); // Split by whitespace
+                                                wordCount += words.length;
+                                            }
+                                        } catch (IOException e) {
+                                            System.out.println("An error occurred while reading the file: " + e.getMessage());
+                                        }
+                                
+                                        System.out.println("Number of lines: " + lineCount);
+                                        System.out.println("Number of words: " + wordCount);
+                                        System.out.println("Number of characters: " + charCount);
+                                    }
+                                }
+                                       
+                            
+                            
+Output:
+
+                            
+                                Number of lines: 3
+                                Number of words: 9
+                                Number of characters: 63
+                                           
+                        </pre>    
+                            
+
+</body>
+
+</html>

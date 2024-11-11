@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<title>Packages</title>
+
+<head>
+    <link href="style2.css" rel="stylesheet"/>
+</head>
+
+<body>
+<u>    <h1>Packages</h1></u>
+<pre>
+<h3>  1. Create a Java program to access the java.util.Date class through import keyword and print the current date of the system.</h3>
+Code:
+                    
+                        import java.util.Date;
+
+                        public class Main {
+                            public static void main(String[] args) {
+                                Date currentDate = new Date();
+                                System.out.println("Current Date: " + currentDate);
+                            }
+                        }                                       
+                    
+                    
+Output:
+
+                    
+                        Current Date: Fri Sep 22 14:35:12 PDT 2023          
+                    
+                    
+<h3>2. Create a Java program to access the java.util.Date class through qualified way and print the current date of the system.</h3>
+Code:
+                    
+                        public class Main {
+                            public static void main(String[] args) {
+                                java.util.Date currentDate = new java.util.Date();
+                                System.out.println("Current Date: " + currentDate);
+                            }
+                        }                                        
+                    
+                    
+Output:
+
+                    
+                        Current Date: Fri Sep 22 14:35:12 PDT 2023          
+                    
+                    
+<h3>3. Create a Java program to access the java.util.Date class through import keyword and print the current date of the system but inherit the Date class.</h3>
+
+Code:                    
+                        import java.util.Date;
+
+                        class CustomDate extends Date {
+                            public void printCurrentDate() {
+                                System.out.println("Current Date: " + this.toString());
+                            }
+                        }
+                        
+                        public class Main {
+                            public static void main(String[] args) {
+                                CustomDate customDate = new CustomDate();
+                                customDate.printCurrentDate();
+                            }
+                        }                                        
+                    
+                    
+Output:
+
+                    
+                        Current Date: Fri Sep 22 14:35:12 PDT 2023           
+                    
+                    
+<h3>4. Create a Java program to access the java.util.Date class through qualified way and print the current date of the system but inherit the Date class.</h3>
+
+Code:                    
+                        public class CustomDate extends java.util.Date {
+                            public void printCurrentDate() {
+                                System.out.println("Current Date: " + this.toString());
+                            }
+                        }
+                        
+                        public class Main {
+                            public static void main(String[] args) {
+                                CustomDate customDate = new CustomDate();
+                                customDate.printCurrentDate();
+                            }
+                        }                                        
+                    
+                    
+Output:
+
+                    
+                        Current Date: Fri Sep 22 14:35:12 PDT 2023           
+                    
+                    
+<h3>5. Create a Java program to create a package with multiple default classes.</h3>
+
+Code:                    
+                        package mypackage;
+
+                        class Animal {
+                            void sound() {
+                                System.out.println("Animal makes a sound");
+                            }
+                        }
+                        package mypackage;
+
+                        class Dog extends Animal {
+                            void sound() {
+                                System.out.println("Dog barks");
+                            }
+                        }
+                        import mypackage.Dog;
+
+                        public class Main {
+                            public static void main(String[] args) {
+                                Dog myDog = new Dog();
+                                myDog.sound();
+                            }
+                        }
+                 
+                    
+Output:
+
+                    
+                        Dog barks           
+                    
+                    
+<h3>6. Create a Java program to create a package with 4 public classes, create the object in another file and call the function created in those classes.</h3>
+Code:
+                    
+                        package mypackage;
+
+                        public class ClassA {
+                            public void display() {
+                                System.out.println("Class A Method");
+                            }
+                        }
+                        package mypackage;
+
+                        public class ClassB {
+                            public void display() {
+                                System.out.println("Class B Method");
+                            }
+                        }
+                        package mypackage;
+
+                        public class ClassC {
+                            public void display() {
+                                System.out.println("Class C Method");
+                            }
+                        }
+                        package mypackage;
+
+                        public class ClassD {
+                            public void display() {
+                                System.out.println("Class D Method");
+                            }
+                        }
+                        import mypackage.ClassA;
+                        import mypackage.ClassB;
+                        import mypackage.ClassC;
+                        import mypackage.ClassD;
+                        
+                        public class Main {
+                            public static void main(String[] args) {
+                                ClassA objA = new ClassA();
+                                ClassB objB = new ClassB();
+                                ClassC objC = new ClassC();
+                                ClassD objD = new ClassD();
+                        
+                                objA.display();
+                                objB.display();
+                                objC.display();
+                                objD.display();
+                            }
+                        }                                                       
+                    
+                    
+Output:
+
+                    
+                        Class A Method
+                        Class B Method
+                        Class C Method
+                        Class D Method                                          
+                    
+                    
+<h3>7. Write a Java program to perform employee payroll processing using packages. In the java file, Emp.java creates a package employee and creates a class Emp. Declare the variables name,empid, category, bpay, hra, da, npay, pf, grosspay, incometax, and allowance. Calculate the values in methods. Create another java file Emppay.java. Create an object e to call the methods to perform and print values.</h3>
+Code:
+                    
+                        package employee;
+
+                        public class Emp {
+                            private String name;
+                            private int empId;
+                            private String category;
+                            private double basicPay;
+                            private double hra;
+                            private double da;
+                            private double netPay;
+                            private double pf;
+                            private double grossPay;
+                            private double incomeTax;
+                            private double allowance;
+                        
+                            public Emp(String name, int empId, String category, double basicPay) {
+                                this.name = name;
+                                this.empId = empId;
+                                this.category = category;
+                                this.basicPay = basicPay;
+                                calculatePay();
+                            }
+                        
+                            private void calculatePay() {
+                                hra = basicPay * 0.20; // 20% of basic pay
+                                da = basicPay * 0.10; // 10% of basic pay
+                                allowance = basicPay * 0.05; // 5% of basic pay
+                                grossPay = basicPay + hra + da + allowance;
+                                pf = grossPay * 0.12; // 12% of gross pay
+                                incomeTax = grossPay * 0.10; // 10% of gross pay
+                                netPay = grossPay - (pf + incomeTax);
+                            }
+                        
+                            public void displayPayroll() {
+                                System.out.println("Employee Name: " + name);
+                                System.out.println("Employee ID: " + empId);
+                                System.out.println("Category: " + category);
+                                System.out.println("Basic Pay: " + basicPay);
+                                System.out.println("HRA: " + hra);
+                                System.out.println("DA: " + da);
+                                System.out.println("Allowances: " + allowance);
+                                System.out.println("Gross Pay: " + grossPay);
+                                System.out.println("PF: " + pf);
+                                System.out.println("Income Tax: " + incomeTax);
+                                System.out.println("Net Pay: " + netPay);
+                            }
+                        }                                        
+                    
+                    
+Output:
+
+                    
+                        Employee Name: John Doe
+                        Employee ID: 101
+                        Category: Developer
+                        Basic Pay: 50000.0
+                        HRA: 10000.0
+                        DA: 5000.0
+                        Allowances: 2500.0
+                        Gross Pay: 62500.0
+                        PF: 7500.0
+                        Income Tax: 6250.0
+                        Net Pay: 47500.0                                           
+                    
+                    
+<h3>8.Create a Java program to create a package with public class and protected members to be accessed in another class.</h3>
+Code:
+                    
+                        package myPackage;
+
+                        public class Employee {
+                            protected String name;
+                            protected int empId;
+                        
+                            public Employee(String name, int empId) {
+                                this.name = name;
+                                this.empId = empId;
+                            }
+                        
+                            protected void displayInfo() {
+                                System.out.println("Employee Name: " + name);
+                                System.out.println("Employee ID: " + empId);
+                            }
+                        }
+                        import myPackage.Employee;
+
+                        public class Main extends Employee {
+                            public Main(String name, int empId) {
+                                super(name, empId);
+                            }
+                        
+                            public static void main(String[] args) {
+                                Main emp = new Main("Alice", 102);
+                                emp.displayInfo();
+                            }
+                        }                                          
+                    
+                    
+Output:
+
+                    
+                        Employee Name: Alice
+                        Employee ID: 102                                          
+                    
+                    
+<h3>9. Create a Java program to create a nested package i.e. c4.sample with public class and protected members to be accessed in another class.</h3>
+Code:
+                    
+                        import c4.sample.SampleClass;
+
+                        public class Main extends SampleClass {
+                            public Main(String message) {
+                                super(message);
+                            }
+                        
+                            public static void main(String[] args) {
+                                Main obj = new Main("Hello from nested package!");
+                                obj.displayMessage();
+                            }
+                        }                                        
+                    
+                    
+Output:
+
+                    
+                        Message: Hello from nested package!           
+                    
+                    
+<h3>10. Create a Java program to create a package with public class and public members to be accessed in another class.</h3>
+Code:
+                    
+                        package myPackage;
+
+                        public class Employee {
+                            public String name;
+                            public int empId;
+                        
+                            public Employee(String name, int empId) {
+                                this.name = name;
+                                this.empId = empId;
+                            }
+                        
+                            public void displayInfo() {
+                                System.out.println("Employee Name: " + name);
+                                System.out.println("Employee ID: " + empId);
+                            }
+                        }
+                        import myPackage.Employee;
+
+                        public class Main {
+                            public static void main(String[] args) {
+                                Employee emp = new Employee("Alice", 101);
+                                emp.displayInfo();
+                            }
+                        }                                            
+                    
+                    
+Output:
+
+                    
+                        Employee Name: Alice
+                        Employee ID: 101                                          
+</pre>
+</body>
+
+
+
+</html>

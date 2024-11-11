@@ -1,0 +1,155 @@
+/* General body styles */
+body {
+  font-family: 'Arial', sans-serif; /* Use Arial or any font you prefer */
+  background-color: #000; /* Black background for the whole page */
+  color: white; /* White text for the entire page */
+  line-height: 1.7; /* Adjust line height for better readability */
+  margin: 0;
+  padding: 0;
+}
+
+/* Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: white; /* Ensure headings have white text */
+  background-color: #333; /* Dark background for headings */
+  padding: 20px;
+  margin: 20px 0;
+  text-align: center; /* Center-align headings */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease-in-out; /* Smooth transition on hover */
+}
+
+h1 {
+  font-size: 1.2cm; /* Slightly larger heading 1 */
+}
+
+h2 {
+  font-size: 1.5cm; /* Slightly larger heading 2 */
+}
+
+h3 {
+  font-size: 0.7cm; /* Slightly larger heading 3 */
+}
+
+h4 {
+  font-size: 1.7cm; /* Slightly larger heading 4 */
+}
+
+h5 {
+  font-size: 1.5cm; /* Slightly larger heading 5 */
+}
+
+h6 {
+  font-size: 1.3cm; /* Slightly larger heading 6 */
+}
+
+/* Hover effect for headings */
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+  background-color: #222; /* Darken the background on hover */
+}
+
+/* Styling for paragraphs */
+p {
+  font-size: 1.2em; /* Increase font size for paragraphs */
+  font-weight: 600; /* Bold text for paragraphs */
+  color: #e0e0e0; /* Lighter color for better contrast against black */
+  line-height: 1.8; /* Line height for comfortable reading */
+  max-width: 800px; /* Limit width for readability */
+  margin: 20px auto; /* Center paragraphs */
+  padding: 15px;
+  background-color: #000; /* Black background for paragraphs */
+  border-radius: 8px; /* Rounded corners for paragraphs */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out; /* Smooth reveal */
+  opacity: 0; /* Hidden by default */
+  visibility: hidden; /* Hidden by default */
+}
+
+/* Reveal text when hovering over paragraphs or headings */
+p:hover, h1:hover + p, h2:hover + p, h3:hover + p, h4:hover + p, h5:hover + p, h6:hover + p {
+  opacity: 1; /* Make text visible */
+  visibility: visible; /* Show the text */
+}
+
+/* Make text under headings (p) visible on hover */
+h1:hover + p, h2:hover + p, h3:hover + p, h4:hover + p, h5:hover + p, h6:hover + p {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Clearer and bolder text for paragraphs under headings */
+h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
+  font-size: 1.3em; /* Slightly larger text under headings */
+  font-weight: 600;
+  line-height: 1.75;
+  color: #e0e0e0;
+  background-color: #000;
+  padding: 20px;
+  border-radius: 8px;
+  transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Reveal text under headings when hovered */
+h1:hover + p, h2:hover + p, h3:hover + p, h4:hover + p, h5:hover + p, h6:hover + p {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Optional: Add borders to headings for extra emphasis */
+h1, h2, h3, h4, h5, h6 {
+  border-bottom: 4px solid #444;
+  padding-bottom: 15px;
+}
+
+/* Styling for links to make them visible on a black background */
+a {
+  color: #66ccff; /* Light blue color for links */
+  text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+  text-decoration: underline; /* Underline links when hovered */
+}
+
+/* Additional styling for other elements (optional) */
+blockquote {
+  font-size: 1.25em; /* Increase font size for blockquotes */
+  font-style: italic;
+  color: #ddd;
+  background-color: #333;
+  border-left: 4px solid #ddd;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+ul, ol {
+  padding-left: 20px;
+  color: #ddd;
+  font-size: 1.15em; /* Larger font for list items */
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+code {
+  background-color: #222;
+  color: #f7f7f7;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 1.15em; /* Larger font for inline code */
+}
+
+/* Code block styling */
+pre {
+  background-color: #111;
+  color: #f7f7f7;
+  padding: 20px;
+  border-radius: 8px;
+  overflow: auto;
+  font-size: 1.1em; /* Larger font size for code blocks */
+}
